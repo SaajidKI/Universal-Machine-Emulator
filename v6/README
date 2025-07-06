@@ -1,0 +1,142 @@
+README
+
+Saajid Islam:   mislam08 
+Laila Ghabbour: lghabb01
+11/21/2023
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//** Acknowledgements: **\\
+
+No help recieved on this assignment other than the provided tools (i.e. Hanson
+data structures, bitpack.h, um disassembler, etc)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//** What has been correctly implemented and what has not **\\
+
+All aspects of the project should be implemented correctly.
+    
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//** Any significant departures from design **\\
+
+Used sequence of sequences instead of sequence of arrays to implement mapped
+segments, as originally planned. Other than that, no significant departures
+from design.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//** Architecture **\\
+
+um.c - Contains main, deals with reading in the file with the 32-bit 
+       instructions and contains the calls to initialize memory segments
+       and then instruction functions. The main purpose is to create a UM 
+       that runs instructions until a halt instruction. This module relies on
+       segments.c and instructions.c as functions from segments.c and 
+       instructions.c are used.
+
+segments.c - Interface responsible for managing memory segments using 
+             sequences for mapped and unmapped segments. Provides functions
+             for initialization, deallocation, creation, duplication, storing,
+             and retrieving.
+
+instructions.c - Interface to handle and carry out all of the instructions.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//** How long our UM takes to execute 50 million instructions **\\
+
+When we times our UM against midmark.um, it took around 7.4 seconds to complete.
+We used umdump on midmark and discovered that it has 30110 instructions. Thus,
+if it takes our UM 7.4 seconds to execute 30110 instructions, then it stands
+to reason that it should take about 20 min 29 seconds (20.48 min) to do 50 
+million instructions. 
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//** UM unit tests **\\
+
+test_halt:
+        Purpose: Tests the basic functionality of the halt instruction.
+        
+        Explanation: The test initializes a sequence of instructions that 
+        includes a halt instruction and printing "Bad!", and a newline. The 
+        halt instruction should terminate the program.
+
+test_print_six:
+        Purpose: Tests the loadval, add, and output instructions.
+        
+        Explanation: The test initializes a sequence of instructions that loads
+        the value 48 into r1, adds 6 to r1, and prints '6' (ASCII value is 54).
+
+test_IO:
+        Purpose: Tests the I/O instructions (input and output).
+        
+        Explanation: The test initializes a sequence that performs a loop,
+        reading characters from input and immediately printing them. This loop
+        runs 255 times (once for each possible printable character).
+
+test_loadval:
+        Purpose: Tests the loadval instruction.
+        
+        Explanation: The test initializes a sequence of instructions that loads
+        characters 'C', 'S', '4', '0', and a newline and prints them. 
+
+test_add:
+        Purpose: Tests the add instruction.
+        
+        Explanation: The test initializes a sequence of instructions that adds
+        20 and 45, and prints the result as an ASCII value ('A');
+
+test_mult:
+        Purpose: Tests the multiply instruction.
+        
+        Explanation: The test initializes a sequence of instructions that 
+        multiplies 2 and 33, and prints the result as an ASCII value ('B');
+
+test_divide:
+        Purpose: Tests the divide instruction.
+        
+        Explanation: The test initializes a sequence of instructions that 
+        divides 134 by 2, and prints the result as an ASCII value ('C');
+
+test_cmov:
+        Purpose: Tests the cmov instruction.
+        
+        Explanation: The test initializes a sequence of instructions that sets
+        up values in registers and performs conditional moves. It then prints 
+        the results ("4321").
+
+test_map_seg:
+        Purpose: Tests the map segment instruction.
+        
+        Explanation: The test initializes a sequence of instructions that maps
+        two memory segments and then halts.
+
+test_unmap_seg:
+        Purpose: Tests the unmap segment instruction.
+        
+        Explanation: The test initializes a sequence of instructions that maps
+        and unmaps memory segments with different sizes and then halts.
+
+test_seg_load:
+        Purpose: Tests the segmented load and segmented store instructions.
+        
+        Explanation: The test initializes a sequence of instructions that sets
+        up a memory segment with characters 'H', 'E', 'L', 'L', 'O', and then
+        loads and prints them.
+
+test_invalid_op:
+        Purpose: Tests the handling of an invalid opcode.
+        
+        Explanation: The test initializes a sequence with an instruction that 
+        has an invalid opcode (14). It then tries to print a value, but since 
+        the opcode is invalid, the implementation should fail an assertion.
+
+test_loadprog:
+        Purpose: Tests the loadprog instruction.
+        
+        Explanation: The test initializes a sequence of instructions that loads
+        a small program into memory and then executes it using loadprog.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//** Hours Spent: **\\
+
+Analyzing:      6 hr
+Design:         6 hr
+Solving:        20 hr
