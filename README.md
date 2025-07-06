@@ -1,10 +1,10 @@
 # Universal Machine Emulator
 
-This project is a full implementation of a Turing-complete Universal Machine (UM) capable of interpreting and executing programs written in a custom 32-bit instruction set architecture. The UM emulates low-level memory management, instruction decoding, and register-based execution, mimicking the core principles of real-world computer architecture.
+This project is a complete implementation of a Turing-complete Universal Machine (UM) designed to interpret and execute binary programs written in a custom 32-bit instruction set architecture. It simulates a low-level computing environment by handling memory segmentation, instruction decoding, and register-based execution.
 
 ## Overview
 
-The UM loads a binary file into memory and executes it instruction-by-instruction, supporting operations such as conditional moves, arithmetic, I/O, dynamic memory allocation, and program loading. It also incorporates its own segmented memory system and a suite of unit tests to ensure functional correctness.
+The machine supports a range of fundamental operations, including conditional moves, arithmetic, input and output, dynamic memory allocation, and program loading and unloading. By replicating these essential features, the UM serves as a simplified model of a physical computer system. Building it involved careful attention to bit-level manipulation, efficient memory handling, and adherence to architectural constraints. 
 
 Through developing this project, I gained experience with:
 
@@ -16,7 +16,7 @@ Through developing this project, I gained experience with:
 
 - Performance tuning and debugging using profiling tools
 
-This emulator demonstrates a deep understanding of systems programming and low-level computation. It is capable of running full-scale applications, including a basic operating system, text-based games, and benchmark programs.
+This emulator demonstrates a deep understanding of system-level programming, performance tradeoffs, and how hardware-level design influences the behavior of software systems. It is capable of running full-scale applications, including a basic operating system, benchmark programs, and interactive games.
 
 ## Usage
 
